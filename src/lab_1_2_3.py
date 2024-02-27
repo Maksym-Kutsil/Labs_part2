@@ -21,13 +21,11 @@ def quick_sort(arr):
 
 
 def find_kth_largest_el(arr, k):
-    if k > len(arr):
-        raise ValueError("Довжина масива менша ніж k")
     sorted_arr = quick_sort(arr)
     return (f"{k} найбільший елемент : {sorted_arr[k - 1]}, "
             f"індекс елементу в масиві : {arr.index(sorted_arr[k - 1])}")
 
 
-array = [5, 3, 10, 2, 14, 20]
+array = [5, 3, 10, 2, 14]
 print(quick_sort(array))
 print(find_kth_largest_el(array, 2))
