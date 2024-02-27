@@ -28,4 +28,4 @@ def find_kth_largest_el(arr, k):
 
 array = [5, 3, 10, 2, 14]
 print(quick_sort(array))
-print(find_kth_largest_el(array, 2))
+print(find_kth_largest_el(array, 4 ))

@@ -27,6 +27,9 @@ class TestQuickSort(unittest.TestCase):
         self.assertEqual(find_kth_largest_el(array, 4), "4 найбільший елемент : 3, індекс елементу в масиві : 1")
         self.assertEqual(find_kth_largest_el(array, 5), "5 найбільший елемент : 2, індекс елементу в масиві : 3")
 
+    def test_index(self):
+        array = [7, 9, 12, 3, 6, 5, 15, 18, 10]
+        self.assertEqual(find_kth_largest_el(array, 1), "1 найбільший елемент : 18, індекс елементу в масиві : 7")
 
 if __name__ == '__main__':
     unittest.main()
