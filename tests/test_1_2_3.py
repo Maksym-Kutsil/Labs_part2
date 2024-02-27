@@ -1,26 +1,32 @@
 import unittest
-from src.lab_1_2_3 import quick_sort
+from src.lab_1_2_3 import *
+
 
 class TestQuickSort(unittest.TestCase):
-
     def test_empty_array(self):
-        """Tests sorting an empty array."""
-        self.assertEqual(quick_sort([]), [])
+        arr = []
+        self.assertEqual(quick_sort(arr), [])
 
     def test_single_element_array(self):
-        """Tests sorting an array with a single element."""
-        self.assertEqual(quick_sort([5]), [5])
+        arr = [3]
+        self.assertEqual(quick_sort(arr), [3])
 
     def test_sorted_array(self):
-        """Tests sorting an already sorted array."""
-        self.assertEqual(quick_sort([1, 2, 3, 4]), [1, 2, 3, 4])
+        arr = [2, 3, 5, 10, 14]
+        self.assertEqual(quick_sort(arr), [14, 10, 5, 3, 2])
 
     def test_unsorted_array(self):
-        """Tests sorting an unsorted array."""
-        self.assertEqual(quick_sort([3, 1, 4, 2]), [1, 2, 3, 4])
+        arr = [5, 3, 10, 2, 14]
+        self.assertEqual(quick_sort(arr), [14, 10, 5, 3, 2])
+
+    def test_find_largest_el(self):
+        array = [5, 3, 10, 2, 14]
+        self.assertEqual(find_kth_largest_el(array, 1), "1 найбільший елемент : 14, індекс елементу в масиві : 4")
+        self.assertEqual(find_kth_largest_el(array, 2), "2 найбільший елемент : 10, індекс елементу в масиві : 2")
+        self.assertEqual(find_kth_largest_el(array, 3), "3 найбільший елемент : 5, індекс елементу в масиві : 0")
+        self.assertEqual(find_kth_largest_el(array, 4), "4 найбільший елемент : 3, індекс елементу в масиві : 1")
+        self.assertEqual(find_kth_largest_el(array, 5), "5 найбільший елемент : 2, індекс елементу в масиві : 3")
+
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
