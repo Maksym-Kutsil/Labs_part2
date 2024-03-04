@@ -19,5 +19,10 @@ class TestMinEatingSpeed(unittest.TestCase):
         h = 6
         self.assertEqual(min_eating_speed(piles, h), 23)
 
+    def test_not_enought_time(self):
+        piles = [3, 6, 7, 11]
+        h = 2
+        self.assertEqual(min_eating_speed(piles, h), None)
+
 if __name__ == '__main__':
     unittest.main()

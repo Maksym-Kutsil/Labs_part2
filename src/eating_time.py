@@ -6,6 +6,9 @@ def can_eat(piles, hours, k):
 
 
 def min_eating_speed(piles, h):
+    if h < len(piles):
+        return None
+
     left = 1
     right = max(piles)
 
@@ -19,6 +22,8 @@ def min_eating_speed(piles, h):
     return left
 
 
+
+
 print(min_eating_speed([3, 6, 7, 11], 8))
-print(min_eating_speed([30, 11, 23, 4, 20], 5))
 print(min_eating_speed([30, 11, 23, 4, 20], 6))
+print(min_eating_speed([30, 11, 23, 4, 20], 5))
