@@ -24,8 +24,6 @@ def min_eating_speed(piles, h):
     return left
 
 
-
-
-print(min_eating_speed([3, 6, 7, 11], 8))
-print(min_eating_speed([30, 11, 23, 4, 20], 6))
-print(min_eating_speed([30, 11, 23, 4, 20], 5))
+print(min_eating_speed([4, 10, 3, 8, 6], 7))
+print(min_eating_speed([4, 8, 1, 4, 5, 3], 10))
+print(min_eating_speed([30, 11, 23, 4, 20], 11))
