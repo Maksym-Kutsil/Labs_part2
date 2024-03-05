@@ -1,4 +1,5 @@
 def can_eat(piles, hours, k):
+    sorted(piles)
     eating_hours = 0
     for pile in piles:
         eating_hours += (pile + k - 1) // k
@@ -6,6 +7,7 @@ def can_eat(piles, hours, k):
 
 
 def min_eating_speed(piles, h):
+    sorted(piles)
     if h < len(piles):
         return None
 
