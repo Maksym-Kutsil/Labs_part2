@@ -4,8 +4,6 @@ def shotres_way(start_point, finish_point, size_of_labyrinth, labyrinth):
     visited = set()
     while queue:
         vertex = queue.pop(0)
-        if vertex in visited:
-            continue
         if vertex == finish_point:
             return dist_to[vertex]
         visited.add(vertex)
@@ -40,15 +38,3 @@ def read_input(input_file):
 def write_output(output_file, result):
     with open(output_file, 'w') as f:
         f.write(str(result))
-
-
-def main():
-    input_file = 'C:/Users/User/Desktop/Lab 5/resources/input.txt'
-    output_file = 'C:/Users/User/Desktop/Lab 5/resources/output.txt'
-    start, finish, size, lab = read_input(input_file)
-    result = shotres_way(start, finish, size, lab)
-    write_output(output_file, result)
-
-
-if __name__ == '__main__':
-    main()
