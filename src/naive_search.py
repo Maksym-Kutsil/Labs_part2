@@ -1,32 +1,31 @@
 def naive_search(haystack, needle):
-    n = len(haystack)
-    m = len(needle)
+    haystack_len = len(haystack)
+    needle_len = len(needle)
     comparisons = 0
     index = None
 
-    if m == 0:
+    if needle_len == 0:
         comparisons = 0
         return index, comparisons
 
-    if n < m:
+    if haystack_len < needle_len:
         comparisons = 0
         return index, comparisons
 
-    found = False  
+    found = False
 
-    for i in range(n - m + 1):
+    for i in range(haystack_len - needle_len + 1):
         j = 0
-        while j < m and haystack[i + j] == needle[j]:
+        while j < needle_len and haystack[i + j] == needle[j]:
             j += 1
             comparisons += 1
 
-        if j == m:
+        if j == needle_len:
             found = True
-            comparisons += 1
             index = i
 
     if not found:
-        comparisons = n
+        comparisons = haystack_len
 
     return index, comparisons
 

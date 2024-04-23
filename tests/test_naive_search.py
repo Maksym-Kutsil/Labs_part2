@@ -22,7 +22,7 @@ class TestNaiveSearch(unittest.TestCase):
         needle = "test2"
         result_index, result_comparisons = naive_search(haystack, needle)
         self.assertEqual(result_index, 6)
-        self.assertEqual(result_comparisons, 11)
+        self.assertEqual(result_comparisons, 10)
 
 
 if __name__ == "__main__":
