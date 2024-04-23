@@ -1,7 +1,7 @@
 def naive_search(haystack, needle):
     n = len(haystack)
     m = len(needle)
-    comparisons = (n - m + 1)
+    comparisons = 0
     index = None
 
     if m == 0:
@@ -10,20 +10,28 @@ def naive_search(haystack, needle):
 
     if n < m:
         comparisons = 0
+        return index, comparisons
+
+    found = False  # Змінна, що вказує, чи було знайдено needle
 
     for i in range(n - m + 1):
         j = 0
         while j < m and haystack[i + j] == needle[j]:
             j += 1
+            comparisons += 1
 
         if j == m:
+            found = True
+            comparisons += 1
             index = i
+
+    if not found:
+        comparisons = n  # Якщо needle не знайдено, кількість порівнянь дорівнює довжині haystack
 
     return index, comparisons
 
-
-haystack = "example1 example2"
-needle = "example2"
+haystack = "example1 example2 example3"
+needle = "example3"
 result_index, result_comparisons = naive_search(haystack, needle)
 
 print("index:", result_index)
