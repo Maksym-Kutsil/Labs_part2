@@ -12,25 +12,23 @@ def naive_search(haystack, needle):
         comparisons = 0
         return index, comparisons
 
-    found = False
-
     for i in range(haystack_len - needle_len + 1):
         j = 0
         while j < needle_len and haystack[i + j] == needle[j]:
-            j += 1
             comparisons += 1
+            j += 1
 
         if j == needle_len:
-            found = True
             index = i
+            comparisons += needle_len
 
-    if not found:
-        comparisons = haystack_len
+    if index is None:
+        comparisons = haystack_len - needle_len + 1
 
     return index, comparisons
 
 haystack = "example1 example2 example3"
-needle = "example3"
+needle = "example2"
 result_index, result_comparisons = naive_search(haystack, needle)
 
 print("index:", result_index)

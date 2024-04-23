@@ -15,14 +15,14 @@ class TestNaiveSearch(unittest.TestCase):
         needle = "python"
         result_index, result_comparisons = naive_search(haystack, needle)
         self.assertEqual(result_index, None)
-        self.assertEqual(result_comparisons, 11)
+        self.assertEqual(result_comparisons, 6)
 
     def test_needle_found(self):
-        haystack = "test1 test2"
+        haystack = "test1 test2 test3"
         needle = "test2"
         result_index, result_comparisons = naive_search(haystack, needle)
         self.assertEqual(result_index, 6)
-        self.assertEqual(result_comparisons, 10)
+        self.assertEqual(result_comparisons, 20)
 
 
 if __name__ == "__main__":
