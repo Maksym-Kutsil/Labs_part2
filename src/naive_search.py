@@ -12,7 +12,7 @@ def naive_search(haystack, needle):
         comparisons = 0
         return index, comparisons
 
-    found = False  # Змінна, що вказує, чи було знайдено needle
+    found = False  
 
     for i in range(n - m + 1):
         j = 0
@@ -26,7 +26,7 @@ def naive_search(haystack, needle):
             index = i
 
     if not found:
-        comparisons = n  # Якщо needle не знайдено, кількість порівнянь дорівнює довжині haystack
+        comparisons = n
 
     return index, comparisons
 
