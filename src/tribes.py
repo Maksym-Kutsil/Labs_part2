@@ -45,26 +45,4 @@ def count_possible_pairs(n, groups):
 
     return count
 
-input1 = [
-    [1, 2],
-    [2, 4],
-    [3, 5]
-]
 
-input2 = [
-    [1, 2],
-    [2, 4],
-    [1, 3],
-    [3, 5],
-    [8, 10]
-]
-
-input3 = [
-    [1, 2],
-    [3, 4],
-    [5, 6]
-]
-
-print(count_possible_pairs(4, input1))
-print(count_possible_pairs(5, input2))
-print(count_possible_pairs(3, input3))
