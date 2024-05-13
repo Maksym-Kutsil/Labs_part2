@@ -1,5 +1,5 @@
 import unittest
-from ..src.naive_search import naive_search
+from src.naive_search import naive_search
 
 
 class TestNaiveSearch(unittest.TestCase):

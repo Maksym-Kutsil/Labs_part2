@@ -1,5 +1,5 @@
 import unittest
-from ..src.find_kth_largest_el import *
+from src.find_kth_largest_el import *
 
 
 class TestQuickSort(unittest.TestCase):

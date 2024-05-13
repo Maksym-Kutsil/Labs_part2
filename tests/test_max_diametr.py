@@ -1,4 +1,4 @@
-from ..src.max_diameter import *
+from src.max_diameter import *
 import unittest
 
 

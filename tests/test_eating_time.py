@@ -1,4 +1,4 @@
-from ..src.eating_time import *
+from src.eating_time import *
 import unittest
 
 

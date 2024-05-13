@@ -86,7 +86,7 @@ def get_path(from_dict, last_vertex, start_vertex):
 
 
 def read_data_from_file(file_name):
-    with open(f"C:\\Users\\User\\Documents\\GitHub\\Labs_part2\\resourses\\{file_name}", "r") as file:
+    with open(f"C:\\Labs_part2\\resourses\\{file_name}", "r") as file:
         roads = file.readlines()
         start_vertexes = roads[0].strip().split()
         destination_vertexes = roads[1].strip().split()
