@@ -1,4 +1,4 @@
-from src.heap_based_priority_queue import *
+from ..src.heap_based_priority_queue import *
 import unittest
 
 class PriorityQueueTest(unittest.TestCase):

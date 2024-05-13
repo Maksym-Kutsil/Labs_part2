@@ -1,5 +1,5 @@
 import unittest
-from src.max_flow import max_flow
+from ..src.max_flow import max_flow
 
 
 class TestFlowersMaxFlow(unittest.TestCase):

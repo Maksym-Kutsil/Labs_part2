@@ -1,4 +1,4 @@
-from src.tribes import *
+from ..src.tribes import *
 import unittest
 
 class TestCountPossiblePairs(unittest.TestCase):
