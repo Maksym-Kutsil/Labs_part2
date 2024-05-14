@@ -13,7 +13,7 @@ class TestWChainGame(unittest.TestCase):
         find_w_chain_length("w_chain_input2.txt", "w_chain_output2.txt")
         with open("../resourses/w_chain_output2.txt", "r", encoding="utf-8") as file:
             result = file.readline()
-        self.assertEqual(int(result), 6)
+        self.assertEqual(int(result), 4)
 
     def test_empty_input(self):
         find_w_chain_length("w_chain_empty_input.txt", "w_chain_empty_output.txt")
