@@ -1,30 +1,59 @@
-def read_file(filename: str) -> list[str]:
-    with open(f"../resourses/{filename}", "r", encoding="utf-8") as file:
-        words_amount = int(file.readline())
-        words = [file.readline().strip() for _ in range(words_amount)]
-    return sorted(words, key=len)
+from collections import defaultdict
 
 
-def find_max_sequence_words(words: list[str]) -> int:
-    dp = {word: 1 for word in words}
+def read_data_from_file(filename):
+    with open(f"../resources/{filename}", "r", encoding="utf-8") as file:
+        lines = file.readlines()
+        if lines:
+            length = int(lines[0].strip().split()[0])
+            words = [line.strip().split()[0] for line in lines[1:]]
+
+    return length, words
+
+
+def build_graph(words):
+    graph = defaultdict(list)
     for word in words:
         for i in range(len(word)):
-            new_word = word[:i] + word[i+1:]
-            if new_word in dp:
-                dp[word] = max(dp[word], dp[new_word] + 1)
-    return max(dp.values())
+            removed_char_word = word[:i] + word[i + 1:]
+            graph[word].append(removed_char_word)
+    return graph
 
 
-def write_output(filename: str, result: int) -> None:
-    with open(f"../resourses/{filename}", "w", encoding="utf-8") as file:
-        file.write(str(result))
+def dfs(word, graph, visited, dynamic_programming):
+    if word not in graph:
+        dynamic_programming[word] = 1
+        return 1
+    if dynamic_programming[word] != -1:
+        return dynamic_programming[word]
+
+    max_length = 0
+    for next_word in graph[word]:
+        if next_word in visited.keys() and not visited[next_word]:
+            visited[next_word] = True
+            max_length = max(max_length, dfs(next_word, graph, visited, dynamic_programming))
+            visited[next_word] = False
+    dynamic_programming[word] = max_length + 1
+    return dynamic_programming[word]
 
 
-def find_w_chain_length(input_file: str, output_file: str) -> None:
+def word_chain(input_file):
     try:
-        words = read_file(input_file)
-    except ValueError:
-        write_output(output_file, -1)
-        return
-    result = find_max_sequence_words(words)
-    write_output(output_file, result)
+        """
+        reading data
+        """
+        length, words = read_data_from_file(input_file)
+    except Exception:
+        return -1
+
+    visited = {word: False for word in words}
+    graph = build_graph(words)
+    dynamic_programming = {word: -1 for word in words}
+
+    max_chain_length = 0
+    for word in words:
+        visited[word] = True
+        max_chain_length = max(max_chain_length, dfs(word, graph, visited, dynamic_programming))
+        visited[word] = False
+
+    return max_chain_length
