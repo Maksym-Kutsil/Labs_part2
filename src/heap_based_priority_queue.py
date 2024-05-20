@@ -51,14 +51,3 @@ class PriorityQueue:
         for node in self.heap:
             print(f"Value: {node.value}, Priority: {node.priority}")
 
-if __name__ == "__main__":
-    pq = PriorityQueue()
-
-    pq.add(1, 4)
-    pq.add(2, 3)
-    pq.add(3, 1)
-    pq.add(15, 8)
-    pq.add(5, 2)
-    pq.add(10, 11)
-
-    pq.display()

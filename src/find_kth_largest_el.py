@@ -26,6 +26,4 @@ def find_kth_largest_el(arr, k):
             f"індекс елементу в масиві : {arr.index(sorted_arr[k - 1])}")
 
 
-array = [5, 3, 10, 2, 14]
-print(quick_sort(array))
-print(find_kth_largest_el(array, 4 ))
+

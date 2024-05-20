@@ -4,8 +4,8 @@ from src.maze import *
 class EmptyMaze(unittest.TestCase):
 
     def test1_path_maze(self):
-        input_file = 'C:/Users/User/Desktop/Lab 5/resources/test_input.txt'
-        output_file = 'C:/Users/User/Desktop/Lab 5/resources/test_output.txt'
+        input_file = '../resourses/test_input.txt'
+        output_file = '../resourses/test_output.txt'
 
         start, finish, size, labyrinth = read_input(input_file)
 
@@ -18,8 +18,8 @@ class EmptyMaze(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test2_path_maze(self):
-        input_file = 'C:/Users/User/Desktop/Lab 5/resources/test2_input.txt'
-        output_file = 'C:/Users/User/Desktop/Lab 5/resources/test2_output.txt'
+        input_file = '../resourses/test2_input.txt'
+        output_file = '../resourses/test2_output.txt'
 
         start, finish, size, maze = read_input(input_file)
 
@@ -32,8 +32,8 @@ class EmptyMaze(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test3_path_maze(self):
-        input_file = 'C:/Users/User/Desktop/Lab 5/resources/test3_input.txt'
-        output_file = 'C:/Users/User/Desktop/Lab 5/resources/test3_output.txt'
+        input_file = '../resourses/test3_input.txt'
+        output_file = '../resourses/test3_output.txt'
 
         start, finish, size, maze = read_input(input_file)
 

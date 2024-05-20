@@ -27,9 +27,4 @@ def naive_search(haystack, needle):
 
     return index, comparisons
 
-haystack = "example1 example2 example3"
-needle = "example2"
-result_index, result_comparisons = naive_search(haystack, needle)
 
-print("index:", result_index)
-print("comparisons:", result_comparisons)
