@@ -1,59 +1,60 @@
-from collections import defaultdict
+def read_file(filename_in):
+    list_of_words = []
+    with open(f"../resources/{filename_in}", "r", encoding="utf-8") as wchain_in:
+        # Reading the first line to get the number of words
+        first_line = wchain_in.readline().strip()
+
+        if not first_line:
+            # If the first line is empty, return empty results
+            return list_of_words
+
+        num_of_word = int(first_line)
+
+        for _ in range(num_of_word):
+            word = wchain_in.readline().strip()
+            list_of_words.append(word)
 
 
-def read_data_from_file(filename):
-    with open(f"../resources/{filename}", "r", encoding="utf-8") as file:
-        lines = file.readlines()
-        if lines:
-            length = int(lines[0].strip().split()[0])
-            words = [line.strip().split()[0] for line in lines[1:]]
-
-    return length, words
+    # Sorting the list of words by length
+    list_of_words.sort(key=len)
+    return list_of_words
 
 
-def build_graph(words):
-    graph = defaultdict(list)
-    for word in words:
-        for i in range(len(word)):
-            removed_char_word = word[:i] + word[i + 1:]
-            graph[word].append(removed_char_word)
-    return graph
+# Cheaking of can make a shorter word by deleting 1 letter
+def shorter_word(shorter_word: str, longer_word: str):
+    if len(longer_word) != len(shorter_word) + 1:
+        return False
+
+    longer_word_idx = 0
+    for i in range(len(shorter_word)):
+        if longer_word_idx == i - 1 and i != 0:
+            longer_word_idx = i
+        if shorter_word[i] != longer_word[longer_word_idx]:
+            longer_word_idx += 1
+            if shorter_word[i] != longer_word[longer_word_idx]:
+                return False
+    return True
 
 
-def dfs(word, graph, visited, dynamic_programming):
-    if word not in graph:
-        dynamic_programming[word] = 1
-        return 1
-    if dynamic_programming[word] != -1:
-        return dynamic_programming[word]
+# Finding max chain of words
+def max_chain(word_list: list[str]):
+    if len(word_list) == 0:
+        return 0
+    else:
+        # Initializing chain_list with all chains with value 1
+        chain_list = [1] * len(word_list)
+        # Sorting the word list by length
 
-    max_length = 0
-    for next_word in graph[word]:
-        if next_word in visited.keys() and not visited[next_word]:
-            visited[next_word] = True
-            max_length = max(max_length, dfs(next_word, graph, visited, dynamic_programming))
-            visited[next_word] = False
-    dynamic_programming[word] = max_length + 1
-    return dynamic_programming[word]
+        for i in range(len(word_list)):
+            for j in range(i):
+                # If the shorter word can be made from the longer word
+                if len(word_list[i]) == len(word_list[j]) + 1 and shorter_word(word_list[j], word_list[i]):
+                    chain_list[i] = max(chain_list[i], chain_list[j] + 1)
+
+        return max(chain_list)
 
 
-def word_chain(input_file):
-    try:
-        """
-        reading data
-        """
-        length, words = read_data_from_file(input_file)
-    except Exception:
-        return -1
-
-    visited = {word: False for word in words}
-    graph = build_graph(words)
-    dynamic_programming = {word: -1 for word in words}
-
-    max_chain_length = 0
-    for word in words:
-        visited[word] = True
-        max_chain_length = max(max_chain_length, dfs(word, graph, visited, dynamic_programming))
-        visited[word] = False
-
-    return max_chain_length
+def write_output_file(filename_in, filename_out):
+    list_of_words = read_file(filename_in)
+    with open(f"../resources/{filename_out}", "w", encoding="utf-8") as wchain_out:
+        wchain_out.write(str(max_chain(list_of_words)))
